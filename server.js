@@ -1,8 +1,17 @@
 import express from "express";
+import path from 'node:path';
+
 
 const server = express();
 const port = 8000;
 
+const __dirname = import.meta.dirname
+const staticPath = path.join(__dirname, 'public')
+
+server.use(express.static(staticPath))
+// server.get('/public/img/exemple.jpg', (req,res) => {
+//   res.sendFile(path.join(staticPath, 'exemple.jpg'))
+// })
 
 server.get('/', (req,res) => {
   res.send(`
@@ -10,9 +19,10 @@ server.get('/', (req,res) => {
     <div><a href="/user/Paul">/user/Paul</a></div>
     <div><a href="/query?search=banana&limit=5">/query?search=banana&limit=5</a></div>
     
-    <img src="https://picsum.photos/200/300" alt="img"/>
+    <img src="/img/exemple.jpg" alt="img"/>
   `)
 })
+
 
 server.get("/user/:name", (req, res) => {
   const {name} = req.params
