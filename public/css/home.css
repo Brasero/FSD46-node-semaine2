@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+}
+
+.container img {
+    height: 50px;
+}
+
+.container ul {
+    display: flex;
+    gap: 5px;
+}
+
+.container ul li {
+    background: red;
+}

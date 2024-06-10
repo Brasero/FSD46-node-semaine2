@@ -1,0 +1,9 @@
+.container {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.container img {
+    height: 80px;
+}
