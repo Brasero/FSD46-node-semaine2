@@ -2,7 +2,7 @@ import express from "express";
 import path from 'node:path';
 import fs from 'node:fs'
 import {header} from "./utils/header.js";
-
+import router from "./route/index.js";
 
 const server = express();
 const port = 8000;
@@ -13,6 +13,8 @@ const dataPath = path.join(staticPath, 'data')
 const viewPath = path.join(__dirname, 'view')
 
 server.use(express.static(staticPath))
+server.use(express.urlencoded({extended: false}))
+server.use(express.json())
 // server.get('/public/img/exemple.jpg', (req,res) => {
 //   res.sendFile(path.join(staticPath, 'exemple.jpg'))
 // })
@@ -20,6 +22,7 @@ server.use(express.static(staticPath))
 const nav = fs.readFileSync(path.join(viewPath, "_nav.html"), {encoding: 'utf8'})
 const footer = fs.readFileSync(path.join(viewPath, '_footer.html'), {encoding: "utf8"})
 
+server.use(router)
 server.get('/', (req,res) => {
   const data = fs.readFileSync(path.join(dataPath, 'kittens.json'), {encoding: "utf8"})
   const kittens = JSON.parse(data)
