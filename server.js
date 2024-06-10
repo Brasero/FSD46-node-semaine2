@@ -3,43 +3,41 @@ import express from "express";
 const server = express();
 const port = 8000;
 
-server.get("/", (req, res) => {
+
+server.get('/', (req,res) => {
+  res.send(`
+    <h1>Welcome</h1>
+    <div><a href="/user/Paul">/user/Paul</a></div>
+    <div><a href="/query?search=banana&limit=5">/query?search=banana&limit=5</a></div>
+    
+    <img src="https://picsum.photos/200/300" alt="img"/>
+  `)
+})
+
+server.get("/user/:name", (req, res) => {
+  const {name} = req.params
   
-  // Pour récupérerer les entêtes de requetes
-  req.header("Authorization");
-  const headers = req.headers["Authorization"]
-  
-  res.set("Content-type", "text/plain").status(200).send("hello")
+  res.send(`
+    <div>User is ${name}</div>
+    <a href="/" >Home</a>
+  `)
 })
 
-server.get("/home", (req,res) => {
-  res.send('Home')
+server.get('/query', (req, res) => {
+  const {search, limit} = req.query
+  res.send(`
+    <h1>Search</h1>
+    <div>You're looking for ${search}, ${limit} times</div>
+    <a href="/">Home</a>
+  `)
 })
 
-server.post("/", (req, res) => {
-  res.send('Form received')
+server.get("*", (req, res) => {
+  res.status(404).send(`
+    <h1>Not found</h1>
+    <div><a href="/">Home</a></div>
+  `)
 })
-
-server.get('/word/gr+s', (req,res) => {
-  res.send("match string pattern")
-})
-
-server.get(/\/gr+s/,(req,res) => {
-  res.send("match regex")
-})
-
-server.get("/user/:id/:name", (req, res) => {
-  const id = req.params.id
-  const name = req.params.name
-  const query = req.query
-  
-  console.log(query)
-  
-  res.send(`User id : ${id}, ${name}`)
-  
-})
-
-
 
 server.listen(port, () => {
   console.log(`Listening on port ${port}`)
