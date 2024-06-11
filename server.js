@@ -10,9 +10,23 @@ const port = 8000;
 const __dirname = import.meta.dirname
 const staticPath = path.join(__dirname, 'public')
 
+const myMiddleware = (req,res,next) => {
+  console.log('Hi middleware')
+  next()
+}
+
+const returnMiddleware = (message) => {
+  return (req,res,next) => {
+    console.log(message)
+    next()
+  }
+}
+
 server.use(express.static(staticPath))
 server.use(express.urlencoded({extended: false}))
 server.use(express.json())
+server.use(myMiddleware)
+server.use(returnMiddleware('returned middleware'))
 // server.get('/public/img/exemple.jpg', (req,res) => {
 //   res.sendFile(path.join(staticPath, 'exemple.jpg'))
 // })
