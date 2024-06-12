@@ -10,7 +10,8 @@ const __dirname = import.meta.dirname
 const staticPath = path.join(__dirname, 'public')
 
 server.set('view engine', "pug")
-server.set('views', path.join(__dirname, "view")) // par default -> ./views
+//server.set('views', path.join(__dirname, "view")) // par default -> ./views
+// À utiliser uniquement si vos vues ne sont pas à la racine du projet dans un dossier "views"
 
 server.use(session({
   name: "test",
