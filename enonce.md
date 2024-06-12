@@ -1,19 +1,21 @@
-# 02 Exercice counter redirection
+## 03 TP projet de connexion (Challenge)
 
+Vous allez faire une page de connexion et une page "sécurisée" accessible uniquement après une connexion réussie. Il  n'y aura qu'un seul utilisateur.
 
-## Vous allez créez une petite application en utilisant les sessions.
-Toutes les réponses se feront en JSON.
+Pour se connecter l'utilisateur devra renseigner son login/password.
 
-Créez un compteur à chaque fois que l'on visite la page / (racine de l'app). 
+Remarque : vous n'avez pas, pour l'instant, la possibilité de passer des données à la vue, nous verrons comment faire cela dans un prochain cours.
 
-Ajoutez +1 au compteur.
+1. Contrainte graphique : vous utiliserez un bootstrap ou un autre framework CSS, il suffit de récupérer les sources et de les placez dans le dossier public. Pensez à faire le nécessaire pour ces fichiers statiques.
 
-Une fois que le compteur arrive à 10 on redirigera l'utilisateur sur une page affichant le résultat (JSON).
+2. Construisez un formulaire de connexion : login/password il s'affichera sur la page principale. Pour la gestion des mots de passe vous pouvez utiliser cryptoJS pour hasher le mot de passe.
 
-Gestion de la redirection en Express :
+3. Créez une page que nous allons "sécuriser" à l'aide d'un middleware/
 
-    res.redirect('/check')
-
-Une route delete permettra de remettre à jour le compteur, 
-
-elle redirigera l'utilisateur sur la page d'accueil une fois le compteur remis à 0.
+>Les infos user
+> ```js
+>  const user = {
+>   login : "Alan",
+>   password : "73a056240baf641c8dc2c9bab20e0c2b457bd6e4" // correspond à "4l4n"
+>  }
+>```
