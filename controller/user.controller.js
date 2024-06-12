@@ -9,6 +9,7 @@ const viewPath = path.join(cwd, 'views')
 export function getForm(req,res) {
   // const html = fs.readFileSync(path.join(viewPath, 'form.html'), {encoding: "utf8"})
   // res.send(html)
+  req.session.counter = 1
   res.render("form", {text: 'Voici mon texte'})
 }
 

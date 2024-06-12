@@ -2,7 +2,8 @@ import express from "express";
 import path from 'node:path';
 import session from 'express-session';
 import routes from "./routes/index.js";
-import cors from 'cors'
+import cors from 'cors';
+import MongoStore from "connect-mongo";
 
 const server = express();
 const port = 8000;
@@ -26,7 +27,8 @@ server.use(session({
   name: "test",
   secret: "simple",
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: true,
+  store: MongoStore.create({mongoUrl: 'mongodb://localhost:27017/user'})
 }))
 server.use(express.static(staticPath))
 server.use(express.urlencoded({extended: false}))
