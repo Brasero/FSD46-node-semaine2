@@ -1,21 +1,15 @@
-## 03 TP projet de connexion (Challenge)
+## 01 Exercice posts Pug
 
-Vous allez faire une page de connexion et une page "sécurisée" accessible uniquement après une connexion réussie. Il  n'y aura qu'un seul utilisateur.
+Affichez la liste des posts suivants. Vous utiliserez un template principal **index.pug** et un fichier de layout : `frontend.pug`
 
-Pour se connecter l'utilisateur devra renseigner son login/password.
+Vous êtes libre d'utiliser ce qu'il vous plait pour la mise en place du style.
 
-Remarque : vous n'avez pas, pour l'instant, la possibilité de passer des données à la vue, nous verrons comment faire cela dans un prochain cours.
+Organisez les templates comme dans le modèle proposé dans le cours. Pensez à utiliser la documentation officielle Pug : https://pugjs.org/
 
-1. Contrainte graphique : vous utiliserez un bootstrap ou un autre framework CSS, il suffit de récupérer les sources et de les placez dans le dossier public. Pensez à faire le nécessaire pour ces fichiers statiques.
-
-2. Construisez un formulaire de connexion : login/password il s'affichera sur la page principale. Pour la gestion des mots de passe vous pouvez utiliser cryptoJS pour hasher le mot de passe.
-
-3. Créez une page que nous allons "sécuriser" à l'aide d'un middleware/
-
->Les infos user
-> ```js
->  const user = {
->   login : "Alan",
->   password : "73a056240baf641c8dc2c9bab20e0c2b457bd6e4" // correspond à "4l4n"
->  }
->```
+```js
+const posts = [
+  { title : "Pug", date : "2022-04-21"},
+  { title : "Express", date : "2022-04-22"},
+  { title : "Node.js", date : "2022-04-23"},
+];
+```

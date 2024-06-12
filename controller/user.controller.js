@@ -7,8 +7,9 @@ const cwd = process.cwd()
 const viewPath = path.join(cwd, 'views')
 
 export function getForm(req,res) {
-  const html = fs.readFileSync(path.join(viewPath, 'form.html'), {encoding: "utf8"})
-  res.send(html)
+  // const html = fs.readFileSync(path.join(viewPath, 'form.html'), {encoding: "utf8"})
+  // res.send(html)
+  res.render("form", {text: 'Voici mon texte'})
 }
 
 export function login(req,res) {

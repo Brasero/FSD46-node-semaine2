@@ -9,6 +9,9 @@ const port = 8000;
 const __dirname = import.meta.dirname
 const staticPath = path.join(__dirname, 'public')
 
+server.set('view engine', "pug")
+server.set('views', path.join(__dirname, "view")) // par default -> ./views
+
 server.use(session({
   name: "test",
   secret: "simple",
