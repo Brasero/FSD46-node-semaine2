@@ -19,3 +19,8 @@ Remarque : vous n'avez pas, pour l'instant, la possibilité de passer des donné
 >   password : "73a056240baf641c8dc2c9bab20e0c2b457bd6e4" // correspond à "4l4n"
 >  }
 >```
+
+## Mongo DB
+
+Suite à l'intégration du token JWT, reprenez ce projet et implémenter l'utilisation de mongoDB avec la session grâce à
+connect-mongo
