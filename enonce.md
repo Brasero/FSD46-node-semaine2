@@ -1,15 +1,7 @@
-## 01 Exercice posts Pug
+## Exercice post form pug
 
-Affichez la liste des posts suivants. Vous utiliserez un template principal **index.pug** et un fichier de layout : `frontend.pug`
+Reprendre l'exercice précedent (branche "postPug12") et ajouté une route pour afficher un formulaire pour saisir de nouveau posts et une pour traiter les données de se formulaire.
 
-Vous êtes libre d'utiliser ce qu'il vous plait pour la mise en place du style.
+Il faudra afficher les nouveaux posts sur la page home
 
-Organisez les templates comme dans le modèle proposé dans le cours. Pensez à utiliser la documentation officielle Pug : https://pugjs.org/
-
-```js
-const posts = [
-  { title : "Pug", date : "2022-04-21"},
-  { title : "Express", date : "2022-04-22"},
-  { title : "Node.js", date : "2022-04-23"},
-];
-```
+Vous êtes libre sur la facon de gerer les données (Constant ou JSON)

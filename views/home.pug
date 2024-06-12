@@ -1,8 +1,9 @@
 extends layout/layout
 
 block content
-    div.container
+    div.list-group
         each post in posts
-          div
-              h2= post.title
-              span= post.date
+          a.list-group-item.list-group-item-action(href='/')
+              div
+                  h2= post.title
+                  span= post.date

@@ -2,6 +2,7 @@ import express from "express";
 import path from 'node:path';
 import session from 'express-session';
 import routes from "./routes/index.js";
+import cors from 'cors'
 
 const server = express();
 const port = 8000;
@@ -12,6 +13,14 @@ const staticPath = path.join(__dirname, 'public')
 server.set('view engine', "pug")
 //server.set('views', path.join(__dirname, "view")) // par default -> ./views
 // À utiliser uniquement si vos vues ne sont pas à la racine du projet dans un dossier "views"
+
+// Le middleware de cors prendra un objet avec la propriété origin qui liste les origins autorisées.
+server.use(cors({
+  origin: [
+    "http://localhost:8888",
+    "http://127.0.0.1:8888"
+  ]
+}))
 
 server.use(session({
   name: "test",
