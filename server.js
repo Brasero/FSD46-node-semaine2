@@ -21,6 +21,13 @@ server.use(session({
   saveUninitialized: true,
   store: MongoStore.create({mongoUrl: process.env.MONGO_URL})
 }))
+
+server.use(function(req,res,next) {
+  res.locals.message = req.session.message
+  req.session.message = null
+  next()
+})
+
 server.use(express.static(staticPath))
 server.use(express.urlencoded({extended: false}))
 server.use(routes)

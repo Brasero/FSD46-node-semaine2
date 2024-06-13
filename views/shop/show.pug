@@ -2,11 +2,18 @@ extends ../layout/layout
 
 block content
     a(href="/shop") back
-    h1#title= prod.society
-    div.listItem Quantité : #{prod.qty}
-    div.listItem En vente : #{prod.sale ? 'Oui' : 'Non'}
-    div.listItem Dimension
-        div.listItem Hauteur : #{prod.size.h} #{prod.size.uom}
-        div.listItem Largeur : #{prod.size.w} #{prod.size.uom}
-    div.listItem Prix : #{prod.price} €
-    div.listItem Année : #{prod.year}
+    div.card.w-75.border-0
+        div.card-body
+            h1.card-title= prod.society
+        div.card-body.d-flex(style="justify-content: space-evenly")
+            div.card-columns.d-flex.flex-column
+                div.card-text Quantité : #{prod.qty}
+                div.card-text En vente : #{prod.sale ? 'Oui' : 'Non'}
+                div.card-text Prix : #{prod.price} €
+                div.card-text Année : #{prod.year}
+            div.card-columns.d-flex.flex-column
+                div.listItem.card
+                    div.card-body
+                        h5.card-title Dimension
+                        div.card-text Hauteur : #{prod.size.h} #{prod.size.uom}
+                        div.card-text Largeur : #{prod.size.w} #{prod.size.uom}

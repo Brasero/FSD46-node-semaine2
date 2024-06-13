@@ -34,3 +34,93 @@ export function getShopStats(req,res) {
     res.status(404).send('Ressource not found')
   })
 }
+
+export function getProductForm(req,res) {
+  res.render("shop/add")
+}
+
+export function getProductUpdateForm(req,res) {
+  const {id} = req.params
+  
+  Products.findById(id).then((product) => {
+    res.render("shop/update", {product})
+  }).catch(() => {
+    res.status(404).send("Ressource not found")
+  })
+}
+const checkFiel = (field) => {
+  return field.trim() === ""
+}
+export function addProduct(req,res) {
+  
+  const {society,qty,w,h,uom,price,year, sale} = req.body
+  
+  if(checkFiel(society) || checkFiel(qty) || checkFiel(w) || checkFiel(h) || checkFiel(uom) || checkFiel(price) || checkFiel(year)) {
+    res.status(403).send('Malformed request')
+    return
+  }
+  
+  const product = new Products({
+    society,
+    qty,
+    price: parseFloat(price),
+    year: parseInt(year),
+    sale: sale === "on",
+    size: {
+      h: parseFloat(h),
+      w: parseFloat(w),
+      uom
+    }
+  })
+  
+  product.save().then(() => {
+    req.session.message = {
+      class: "alert-success",
+      text: `Product ${society} created`
+    }
+    res.redirect("/shop")
+  })
+}
+
+export function updateProduct(req,res) {
+  const {id} = req.params
+  
+  const {society,qty,w,h,uom,price,year, sale} = req.body
+  console.log(sale)
+  
+  if(checkFiel(society) || checkFiel(qty) || checkFiel(w) || checkFiel(h) || checkFiel(uom) || checkFiel(price) || checkFiel(year)) {
+    res.status(403).send('Malformed request')
+    return
+  }
+  
+  Products.findByIdAndUpdate(id, {
+    society,
+    qty,
+    price: parseFloat(price),
+    year: parseInt(year),
+    sale: sale === "on",
+    size: {
+      h: parseFloat(h),
+      w: parseFloat(w),
+      uom
+    }
+  }).then(() => {
+    req.session.message = {
+      class: "alert-success",
+      text: `Product ${society} updated`
+    }
+    res.redirect("/shop"+req.url)
+  })
+}
+
+export function deleteProduct(req,res) {
+  const {id} = req.params
+  
+  Products.findByIdAndDelete(id).then(() => {
+    req.session.message = {
+      class: "alert-success",
+      text: `Product deleted`
+    }
+    res.redirect('/shop')
+  })
+}

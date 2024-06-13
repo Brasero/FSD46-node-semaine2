@@ -50,3 +50,44 @@ export function show(req, res) {
   })
   
 }
+
+export function deleteCat(req,res) {
+  // /cat/delete/:id
+  const {id} = req.params
+  
+  CatModel.findByIdAndDelete(id).then(() => {
+    res.redirect('/')
+  })
+  // == CatModel.deleteOne({_id: id})
+}
+
+export function getCatUpdateForm(req,res) {
+  // /cat/update/:id
+  const {id} = req.params
+  
+  CatModel.findById(id).then((cat) => {
+    res.render("cat/updateForm", {cat})
+  })
+    .catch((err) => {
+    console.log(err)
+    res.status(404).send("Ressource not found")
+  })
+}
+
+export function updateCat(req,res) {
+  const {id} = req.params
+  const {name, age} = req.body
+  
+  if (!name || name.trim() === "" || !age || isNaN(parseInt(age))) {
+    res.status(403).send("Malformed request")
+    return
+  }
+  
+  //CatModel.updateOne({_id: id}, {name, age}) ==
+  
+  CatModel.findByIdAndUpdate(id, {name, age}).then(() => {
+    res.redirect('/')
+  }).catch(() => {
+    res.status(500).send('Error')
+  })
+}
