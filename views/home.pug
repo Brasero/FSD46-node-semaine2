@@ -1,0 +1,7 @@
+div
+    ul
+      each cat in cats
+          li
+              div= cat.name
+              span= cat.age
+              a(href="/cat/"+cat.name) voir >
