@@ -1,0 +1,12 @@
+extends ../layout/layout
+
+block content
+    a(href="/shop") back
+    h1#title= prod.society
+    div.listItem Quantité : #{prod.qty}
+    div.listItem En vente : #{prod.sale ? 'Oui' : 'Non'}
+    div.listItem Dimension
+        div.listItem Hauteur : #{prod.size.h} #{prod.size.uom}
+        div.listItem Largeur : #{prod.size.w} #{prod.size.uom}
+    div.listItem Prix : #{prod.price} €
+    div.listItem Année : #{prod.year}

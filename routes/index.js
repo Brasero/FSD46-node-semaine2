@@ -1,10 +1,10 @@
 import express from 'express'
-import {addCat, getForm, getHome, show} from "../controller/cat.controller.js";
+import catRoutes from "./catRoutes.js";
+import productRoute from "./productRoute.js";
 
 const router = express.Router()
 
-router.post('/addCat', addCat)
-router.get("/addCat", getForm)
-router.get("/", getHome)
-router.get("/cat/:name", show)
+router.use('/', catRoutes)
+router.use('/shop', productRoute)
+
 export default router

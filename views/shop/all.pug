@@ -1,0 +1,11 @@
+extends ../layout/layout
+
+block content
+    div.container-fluid
+        include ../partials/_shopNav
+        div.list-group
+            each product in products
+              a.list-group-item.list-group-item-action(href='/shop/show/'+product._id)
+                div
+                    h2= product.society
+                    small Quantity : #{product.qty}

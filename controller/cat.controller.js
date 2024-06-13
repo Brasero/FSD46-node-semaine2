@@ -31,7 +31,8 @@ export function getForm(req, res) {
 
 export function show(req, res) {
   const {name} = req.params
-  CatModel.findOne({name: name})
+  const nameFilter = new RegExp(name, 'i')
+  CatModel.findOne({name: nameFilter})
     .then((cat) => {
         if (!cat) {
           res.status(404).send("Ressource not found")

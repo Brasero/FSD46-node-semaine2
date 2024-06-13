@@ -1,4 +1,7 @@
-div
-    a(href="/") Back
-    div= cat.name
-    div= cat.age
+extends ../layout/layout
+
+block content
+    div
+        a(href="/") Back
+        div= cat.name
+        div= cat.age
