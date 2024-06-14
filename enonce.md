@@ -82,7 +82,7 @@ Une fois enregistré, l'utilisateur sera re-dirigé vers la page login.
 
 L'utilisateur se connectera et sera alors re-dirigé si tout se passe bien vers la page Dashboard, sinon on lui ré-affichera la page de login.
 
-## 05 Middleware sécurité
+## 05d Middleware sécurité
 
 Mettez en place un middleware de sécurité pour protéger la page dashboard. Seul un utilisateur connecté pourra consulter cette page.
 

@@ -1,0 +1,18 @@
+extends ../layout/layout
+
+mixin inputGroup(name, label, type)
+    div.mb-3
+        label.form-label(for=name)= label
+        input.form-control(name=name, id=name, type=type)
+
+block content
+    div.container-fluid.d-flex.justify-content-center
+        form(action="/signin", method="post").w-75
+            h2 Inscription
+            div.container
+                +inputGroup('firstName', 'Nom', 'text')
+                +inputGroup('lastName', 'Prénom', 'text')
+                +inputGroup("email", "Email", "email")
+                +inputGroup("password", "Mot de passe", "password")
+                +inputGroup("confirmPassword", "Confirmez mot de passe", "password")
+                input.btn.btn-primary.w-100(type="submit", value="S'inscrire")

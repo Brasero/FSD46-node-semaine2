@@ -1,0 +1,14 @@
+extends ../layout/layout
+
+mixin inputGroup(name,label,type)
+    div.mb-3
+        label.form-label(for=name)= label
+        input.form-control(name=name, id=name, type=type)
+
+block content
+    div.container-fluid.d-flex.justify-content-center
+        form.w-75(action="/login", method="post")
+            h3 Connexion
+            +inputGroup("email", "Email", "email")
+            +inputGroup("password", "Mot de passe", "password")
+            input.btn.btn-primary.w-100(type="submit", value="Se connecter")

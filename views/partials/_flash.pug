@@ -1,0 +1,8 @@
+if flashs
+  each flash in flashs
+    - const className = `alert ${flash.type}`
+    div(class=className)
+        h5= flash.title
+        ul
+            each message in flash.messages
+              li= message

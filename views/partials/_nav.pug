@@ -1,0 +1,18 @@
+mixin navItem(path, label)
+    li.nav-item
+        a.nav-link(href=path)= label
+
+nav.navbar.navbar-expand-lg.bg-body-tertiary
+    div.container-fluid
+        a.navbar-brand(href="/") Students
+        button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+            span.navbar-toggler-icon
+        div.collapse.navbar-collapse#navbarNav
+            ul.navbar-nav
+                +navItem('/', "Home")
+                if auth
+                    +navItem("/dashboard", "Dashboard")
+                    li.nav-item
+                        a.nav-link.btn.btn-danger(href="/logout") Déconnexion
+                else
+                    +navItem("/login", 'Connexion')

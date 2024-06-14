@@ -1,0 +1,27 @@
+{
+  "name": "eval",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "db:pull": "docker pull mongo",
+    "db:mount": "docker run --name mongo_node -p 27017:27017 -d mongo",
+    "db:start": "docker start mongo_node",
+    "db:stop": "docker stop mongo_node",
+    "db:bash": "docker exec -it mongo_node bash",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.4.1",
+    "pug": "^3.0.3"
+  }
+}

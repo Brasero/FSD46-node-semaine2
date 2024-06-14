@@ -1,0 +1,10 @@
+extends ../layout/layout
+
+block content
+    div.container-fluid
+        h2 #{user.firstName}, #{user.lastName} Bienvenu
+        p.
+            Cette page est sécurisée et uniquement accesible après connéxion
+            le middleware authMiddleware placé juste avant le controller de cette route s'assure que le client possède
+            un token JWT valide avant de laissé passer la requête.
+            Si le token n'existe pas ou n'est pas valide alors le middleware redirige le client vers la page de connexion
