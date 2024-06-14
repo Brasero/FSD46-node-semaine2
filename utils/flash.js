@@ -18,7 +18,7 @@ class Flash {
   addMessage(title, type, message) {
     const index = this.flashs.findIndex(flash => flash.title === title)
     if (index !== -1) {
-      this.flashs[index].message.push("message")
+      this.flashs[index].messages.push(message)
     }
     else {
       this.flashs.push({title, type, messages: [message]})
